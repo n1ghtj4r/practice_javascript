@@ -24,7 +24,7 @@ function parseShipment(rawData) {
 
 function planRestock(pantry, shipment) {
   const actions = [];
-
+  
   // Create a Set of existing SKUs for quick lookup
   const pantrySkus = new Set(pantry.map(item => item.sku));
 
