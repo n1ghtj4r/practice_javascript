@@ -1,0 +1,49 @@
+// Hoisting is a behavior in JavaScript that often confuses beginners, but understanding it can help you avoid subtle bugs in your code.
+// In simple terms hoisting is JavaScript's default behavior of moving declarations to the top of their respective scopes during 
+// the compilation phase before the code is executed.
+
+// To understand hoisting, it's important to know that JavaScript runs in two phases: the compilation phase and the execution phase. 
+// During the compilation phase, the JavaScript engine goes through your code and sets up memory space for variables and functions. 
+// This is where hoisting comes into play.
+
+// Let's start with variables hoisting, when you declare a variable using the var keyword, JavaScript hoists the declaration to the top of its scope. 
+// However it's crucial to note that only the declaration is hoisted, not the initialization. 
+// This means you can use a variable in your code before you have declared it, 
+// but its value will be undefined until you actually assign a value to it.
+
+console.log(x); // undefined
+var x = 5;
+console.log(x); // 5
+
+console.log("\n"); ////////////////////////////////////////////////////////////////
+
+// In this code even though we use x before declaring it we don't get an error, instead we get undefined. 
+// This is because JavaScript hoists the declaration var x to the top of its scope but not the initialization x = 5. 
+// It's as if the code were rewritten like this:
+
+var x;
+console.log(x); // undefined
+x = 5;
+console.log(x); // 5
+
+console.log("\n"); ////////////////////////////////////////////////////////////////
+
+// Function hoisting works a bit differently. When you declare a function using the function declaration syntax both 
+// the function name and the function body are hoisted. This means you can call a function before you've declared it in your code. 
+// Here's an example of function hoisting:
+
+sayHello(); // "Hello, World!"
+
+function sayHello(){
+  console.log("Hello, World!");
+}
+
+// In this case, we can call sayHello() before its declaration because the entire function is hoisted to the top of its scope.
+
+// It's important to note that hoisting works differently with let and const declarations introduced in ES6.
+
+//console.log(y); // Throws a ReferenceError  ////////////////////////// <--------------------
+//let y = 10; ////////////////////////////////////////////////////////// <--------------------
+
+// These declarations are hoisted but they are not initialized and you can't access 
+// them before the actual declaration in your code. This is often referred to as the temporal dead zone.
